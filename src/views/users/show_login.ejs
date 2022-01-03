@@ -2,16 +2,14 @@
 <%- include('../includes/nav'); %>
 
 <main class="global-lp">
-  <div class="columns is-multiline">
-    <div class="column is-12 is-hidden">
-      <div class="has-text-centered notification is-danger is-light">Um erro qualquer</div>
-    </div>
-    <div class="column is-12 mt-3">
-      <h1 class="is-size-3 has-text-centered">Login</h1>
-      <p class="has-text-centered">Acesse sua conta!</p>
-    </div>
-  </div>
   <section class="container contact-container">
+    <%- include('../includes/messages'); %>
+    <div class="columns is-multiline">
+      <div class="column is-12 mt-3">
+        <h1 class="is-size-3 has-text-centered">Login</h1>
+        <p class="has-text-centered">Acesse sua conta!</p>
+      </div>
+    </div>
     <form action="/login/new" method="post">
       <input type="hidden" name="_csrf" value=<%= csrfToken %>>
       <div class="columns is-multiline is-mobile login">
@@ -30,9 +28,9 @@
             <input type="password" class="input" name="password" id="password" required>
           </div>
         </div>
-        <div class="column is-12">
-          <button class="button is-fullwidth is-success" type="submit">Entrar</button>
-        </div>
+          <div class="column is-12">
+            <button class="button is-fullwidth is-success" type="submit">Entrar</button>
+          </div>
       </div>
       <a href="/cadastro">Não tenho uma conta</a>
     </form>

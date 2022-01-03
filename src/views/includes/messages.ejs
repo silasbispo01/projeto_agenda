@@ -1,0 +1,15 @@
+<% if (errors.length > 0) { %>
+    <% errors.forEach(erro => { %>
+    <div class="column is-12">
+        <div class="has-text-centered notification is-danger is-light"><%= erro %> </div>
+    </div>
+    <% }) %> 
+<% } %>
+
+<% if (notices) { %>
+    <% notices.forEach(notice => { %>
+    <div class="column is-12">
+        <div class="has-text-centered notification is-success is-light"><%= notice %> </div>
+    </div>
+    <% }) %> 
+<% } %>

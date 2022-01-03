@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item mr-6" href="/">
       AGENDA
@@ -13,59 +13,46 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
+      <% if(user) { %> 
+        <a class="navbar-item" href="/contatos">
+          Cadastrar contatos
         </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
+      <% } %> 
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-            <a class="button is-primary signup-button" href="/cadastro">
+          <% if(!user) { %> 
+            <a class="button is-primary" href="/cadastro">
               <strong>Criar conta</strong>
             </a>
-           <a class="button is-light login-button" href="/login">
-            Entrar
-          </a>
+            <a class="button is-light" href="/login">
+              Entrar
+            </a>
+          <% } else { %> 
+            <form action="/logout">
+              <button class='button logout is-danger'>Sair</button>
+            </form>
+          <% } %> 
         </div>
       </div>
     </div>
   </div>
 </nav>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<style>
+  .logout {
+    width: 100px;
+  }
+</style>
 <script>
   let path = window.location.pathname;
-
-  $('.signup-button, .login-button').each(function () {
-    if($(this).attr('href') == path) {
-      $(this).addClass("is-hidden");RTCRtpSender
+  $('a').each(function () {
+    let current_path = $(this).attr('href')
+    if(current_path == path && current_path != '/') {
+      $(this).addClass("is-hidden");
     }
   });
 </script>
