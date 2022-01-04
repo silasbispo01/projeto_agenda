@@ -2,38 +2,63 @@
 <%- include('../includes/nav'); %>
 
 <main class="global-lp">
-  <div class="columns is-multiline">
-    <%- include('../includes/messages'); %>
-    <div class="column is-12 mt-3">
-      <h1 class="is-size-3 has-text-centered">Contatos</h1>
-      <p class="has-text-centered">Cadastre ou edite contatos abaixo!</p>
-    </div>
-  </div>
   <section class="container contact-container">
-    <form action="/login/new" method="post">
+    <div class="columns is-multiline">
+      <div class="column is-12 mt-3">
+        <h1 class="is-size-3 has-text-centered">Contatos</h1>
+        <p class="has-text-centered">Cadastre ou edite contatos abaixo!</p>
+      </div>
+      <%- include('../includes/messages'); %>
+    </div>
+    <form action="/contatos/new" method="post">
       <input type="hidden" name="_csrf" value=<%= csrfToken %> >
       <div class="columns is-multiline is-mobile login">
         <div class="column is-12">
           <label for="nome" class="label">Nome:</label>
-          <input type="text" class="input" name="name" id="nome" required>
+          <input type="text" class="input" name="nome" id="nome" >
         </div>
         <div class="column is-12">
           <label for="sobrenome" class="label">Sobrenome:</label>
-          <input type="text" class="input" name="second_name" id="sobrenome" required>
+          <input type="text" class="input" name="sobrenome" id="sobrenome" >
         </div>
         <div class="column is-12">
           <label for="email" class="label">Email:</label>
-          <input type="email" class="input" name="email" id="email"  required>
+          <input type="email" class="input" name="email" id="email" >
         </div>
         <div class="column is-12">
           <label for="telefone" class="label">Telefone:</label>
-          <input type="email" class="input" name="telefone" id="telefone"  required>
+          <input type="email" class="input" name="telefone" id="telefone">
         </div>
         <div class="column is-12">
           <button class="button is-fullwidth is-success" type="submit">Salvar</button>
         </div>
       </div>
     </form>
+  </section>
+  <section class="container .contact-container">
+    <div class="columns is-multiline">
+      <div class="column is-12 mt-3">
+        <h1 class="is-size-3 has-text-centered">Lista de contatos</h1>
+      </div>
+      <div class="column is-12">
+        <table class="table" style="margin: 0 auto">
+          <thead>
+            <td>Nome</td>
+            <td>Sobrenome</td>
+            <td>Telefone</td>
+            <td>Email</td>
+          </thead>
+          <% contacts.forEach((contact) => { %> 
+            <tr>
+              <td><%= contact.nome %></td>
+              <td><%= contact.sobrenome %></td>
+              <td><%= contact.telefone %></td>
+              <td><%= contact.email %></td>
+            </tr>
+          <% })  %> 
+        </table>
+      </div>
+    </div>
   </section>
 </main>
 

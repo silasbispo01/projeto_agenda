@@ -22,6 +22,6 @@ route.get("/logout", loginRequired, usersController.user_logout);
 
 // Rotas de contato
 route.get('/contatos', loginRequired, contactsController.show_contacts);
-
+route.post('/contatos/new', loginRequired, contactsController.create_contacts);
 
 module.exports = route;
